@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap');
+.dialogs{
+    display: grid;
+    background: #E4D8D8;
+    border-radius: 20px;
+    grid-template-columns: 3fr 9fr ;
+    height: 90vh;
+
+}
+.messageElements{
+    overflow-y: scroll;
+    height: 75vh;
+}
+.dialog{
+    padding: 5px 20px;
+}
+.dialog a{
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 29px;
+    color: #FFFFFF;
+}
+.dialogs_items{
+    box-sizing: border-box;
+    padding: 10px;
+    background: #BFBFBF;
+    box-shadow: 0px 0 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px 0px 0px 20px;
+}
+.dialogs_items .active {
+    color: gold;
+}
+
+.message{
+    box-sizing: border-box;
+    width: 354px;
+    height: 75px;    
+    margin: 10px;
+    background: #F1F1F1;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+.headerMessage{
+    background: #CACACA;
+    border-radius: 0px 20px 0px 0px;
+    height: 65px;
+}
