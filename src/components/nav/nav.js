@@ -6,14 +6,13 @@ const Nav = () => {
     return(
         <nav className={c.nav}>
           <div className={c.item}> 
-            <NavLink to="/profile" className={isActive => (isActive.isActive ? `${c.active}` : "")
-  }
->Profile</NavLink>
+            <NavLink to="/profile" className={isActive => (isActive.isActive ? `${c.active}` : "")}>Profile</NavLink>
           </div>
           <div className={c.item}>           
-            <NavLink to="/dialogs" className={isActive => (isActive.isActive  ? `${c.active}` : "")
-  }
->Messages</NavLink>
+            <NavLink to="/dialogs" className={isActive => (isActive.isActive  ? `${c.active}` : "")}>Messages</NavLink>
+          </div>
+          <div className={c.item}>
+          <NavLink to="/users" className={isActive => (isActive.isActive  ? `${c.active}` : "")}>Users</NavLink>
           </div>
           <div className={c.item}>
             <a>News</a>
