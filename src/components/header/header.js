@@ -1,7 +1,8 @@
 import React from "react";
 import c from './header.module.css';
+import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
     return(
         <header className={c.header}>
             <div className="container">
@@ -11,6 +12,10 @@ const Header = () => {
                         <path d="M25 10L37.9904 32.5H12.0096L25 10Z" fill="#606060"/>
                     </svg>
                     <div>Такая вот социальная сеть</div>
+                    <div className={c.loginBlock}>
+                    {props.isAuth ? props.login :
+                    <NavLink to="/login" >login</NavLink>}
+                    </div>
                 </div>
             
             </div>
