@@ -1,7 +1,7 @@
 import React from "react";
 import Profile from "./profile";
 import { connect } from "react-redux";
-import { getUserProfile, getStatus, updateStatus } from "../../redux/profile-reducer";
+import { getUserProfile, getStatus, updateStatus, savePhoto } from "../../redux/profile-reducer";
 import { useLocation, useNavigate, useParams} from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
@@ -24,20 +24,28 @@ export function withRouter(Component) {
 	return ComponentWithRouterProp;
 }
 class ProfileContainer extends React.Component {
-  componentDidMount(){
-    
-    let profileId = this.props.router.params.userId; 
-    if(!profileId) {
-      profileId = this.props.authUserId;
+  refreshProfile() {
+    let userId = this.props.router.params.userId; 
+    if(!userId) {
+      userId = this.props.authUserId;
     }
-    this.props.getUserProfile(profileId);
-    this.props.getStatus(profileId);
+    this.props.getUserProfile(userId);
+    this.props.getStatus(userId);
+  }
+  componentDidMount(){
+    this.refreshProfile();
+  }
+  componentDidUpdate(prevProps){
+    if(this.props.router.params.userId != prevProps.router.params.userId){
+      this.refreshProfile();
+    }
+    
   }
   render(){
     return(
       <div>
-        <Profile {...this.props} profile = {this.props.profile} 
-        status = {this.props.status} updateStatus = {this.props.updateStatus}/>
+        <Profile {...this.props} isOwner = {!this.props.router.params.userId} profile = {this.props.profile} 
+        status = {this.props.status} updateStatus = {this.props.updateStatus} savePhoto = {this.props.savePhoto}/>
         </div>
     )
   }
@@ -50,7 +58,7 @@ let mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth
 }) 
 export default compose(
-  connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
+  connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto}),
   withRouter,
   withAuthRedirect
 )(ProfileContainer)
