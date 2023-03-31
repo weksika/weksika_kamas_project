@@ -3,19 +3,19 @@ import Preloader from "../../common/preloader/preloader";
 import s from './profileInfo.module.css';
 import ProfileStatus from "./profileStatus";
 
-const ProfileInfo = (props) => {
-    if(!props.profile){
+const ProfileInfo = ({profile, status, updateStatus}) => {
+    if(!profile){
         return <Preloader/>
     }
     return (
         <div className={s.wrapper}>
             <div className={s.content}>
-                <div className={s.photo}  style = {{backgroundImage: `url(${props.profile.photos.small})`}}>
+                <div className={s.photo}  style = {{backgroundImage: `url(${profile.photos.small})`}}>
                 </div>
                 <div className={s.fullname}>
-                    {props.profile.fullName}
+                    {profile.fullName}
                 </div>
-                <ProfileStatus aboutMe = {props.profile.aboutMe}/>
+                <ProfileStatus aboutMe = {status} updateStatus = {updateStatus}/>
             </div>
 
         </div>

@@ -2,9 +2,18 @@
     width: 100px;
     height: 100px;
 }
-
+.paginator {
+    margin: 10px;
+    height: 100px;
+    background-color: rgb(255, 190, 190);
+}
+.pageNumber {
+    padding: 2px;
+    border: 1px solid grey;
+}
 .selectedPage {
     font-weight: bold;
+    border-color: black;
 }
 .loader img{
     width: 50px;
